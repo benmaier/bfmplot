@@ -15,7 +15,7 @@ Install as development version (such that you don't have to reinstall after upda
 
 Alternatively, install normally
 
-    pip install ./fisheye
+    pip install ./bfmplot
     cd bfmplot; make install
 
 ## Example
