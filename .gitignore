@@ -5,3 +5,5 @@ __pycache__
 *.swp
 
 /dist/
+
+/notebooks/.ipynb_checkpoints/
