@@ -9,7 +9,7 @@ def sin_test(n=8,text_position='start'):
     #pl.figure(figsize=bp.phys_rev_column())
     pl.figure(figsize=bp.golden_ratio(5))
 
-    x = np.linspace(0,5*np.pi,100)
+    x = np.linspace(1,5*np.pi,100)
 
     for i in range(n):
         pl.plot(x, 1-np.sin(x[::-1]/np.sqrt(i+1)), marker=bp.markers[i],mfc='w',label='$i=%d$'%i)
@@ -19,11 +19,18 @@ def sin_test(n=8,text_position='start'):
     leg = pl.legend()
     bp.align_legend_right(leg)
 
-    bp.arrow(pl.gca(), r'$i$', (6, 0.8), (3, 1.8), text_position=text_position)
+    bp.arrow(pl.gca(), r'$i$', 
+             (3, 1.8), 
+             (6, 0.8), 
+             text_position=text_position)
 
 
     pl.xlabel('hello')
     pl.ylabel('hello')
+
+    bp.set_n_ticks(pl.gca(), 3, 2)
+
+    #pl.xscale('log')
 
     pl.gcf().tight_layout()
 

@@ -137,3 +137,38 @@ def arrow(ax,
                                  ),
                 **text_kwargs
                 )
+
+def stupid_strip_ticks(ax):
+    """Don't use this."""
+
+    X = ax.get_xticks(), ax.get_xticklabels()
+    Y = ax.get_yticks(), ax.get_yticklabels()
+
+    for i, (loc, lab) in enumerate([ X, Y ]):
+        
+        indices = [ 0, -1 ]
+
+        new_loc = []
+        new_lab = []
+
+        for ndx in indices:
+            new_loc.append(loc[ndx])
+            new_lab.append(lab[ndx])
+
+        if i == 0:
+            ax.set_xticks(new_loc)
+            #ax.set_xticklabels(new_lab)
+        else:
+            ax.set_yticks(new_loc)
+            #ax.set_yticklabels(new_lab)
+        
+
+def set_n_ticks(ax=None,nx=3,ny=2):
+    """Set the number of major ticks for each axis"""
+    if ax is None:
+        ax = pl.gca()
+    old_ax = pl.gca()
+    pl.sca(ax)
+    pl.locator_params(axis='y', nbins=nx)
+    pl.locator_params(axis='x', nbins=ny)
+    pl.sca(old_ax)

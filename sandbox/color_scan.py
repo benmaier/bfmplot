@@ -42,6 +42,7 @@ for colors,name in zip([
 
     bp.set_color_cycle(colors)
     sin_test(n=8,text_position='start',with_legend=False)
+    bp.set_n_ticks(pl.gca(),nx=4,ny=4)
 
     name = name.replace('(','_')
     name = name.replace(')','_')
