@@ -53,17 +53,9 @@ def sin_test(n=8,text_position='start'):
 
 
 sin_test(n=4,text_position='start')
-pl.savefig('one.png',dpi=150)
-
-# change the colors
-bp.set_color_cycle(bp.new_colors)
-
-sin_test(n=4,text_position='end')
-pl.savefig('two.png',dpi=150)
 
 pl.show()
 ```
 
 ![one](https://github.com/benmaier/bfmplot/raw/master/sandbox/one.png "first")
-![two](https://github.com/benmaier/bfmplot/raw/master/sandbox/two.png "second")
 
