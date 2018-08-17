@@ -37,8 +37,6 @@ cccs_colors=[
                 '#e6ab02',
             ]
 
-mpl.rcParams['axes.prop_cycle'] = cycler(color=brewer_qualitative)
-
 class simple_cycler(list):
     """Simplest implementation of a list with periodic boundary conditions"""
     def __init__(self,items):

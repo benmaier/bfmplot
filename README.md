@@ -87,3 +87,4 @@ for colors,name in zip([
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.new_colors.png "")
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.brewer_qualitative.png "")
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.cccs_colors.png "")
+![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.get_cividis_colors_8_.png "")

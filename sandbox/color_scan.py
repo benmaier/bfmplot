@@ -29,17 +29,22 @@ for colors,name in zip([
                 bp.new_colors,
                 bp.brewer_qualitative,
                 bp.cccs_colors,                
+                bp.get_cividis_colors(8),
                ],
                [
                 'bfmplot.mpl_default_colors',
                 'bfmplot.new_colors',
                 'bfmplot.brewer_qualitative',
                 'bfmplot.cccs_colors',
+                'bfmplot.get_cividis_colors(8)',
                ],
                ):
 
     bp.set_color_cycle(colors)
-    sin_test(n=8,text_position='start')
+    sin_test(n=8,text_position='start',with_legend=False)
+
+    name = name.replace('(','_')
+    name = name.replace(')','_')
 
     pl.gcf().savefig(name+".png",dpi=100)
 
