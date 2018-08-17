@@ -44,8 +44,7 @@ def arrow(ax,
           xy_end,
           text_position = 'end',
           coords = 'data',
-          angleA = 10,
-          angleB = -80,
+          rad = 0.3,
           linewidth=None,
           lw=None,
           color=None,
@@ -79,10 +78,8 @@ def arrow(ax,
         'figure fraction' : fraction of the figure in [0,1]
         Other styles:
         https://matplotlib.org/api/_as_gen/matplotlib.pyplot.annotate.html
-    angleA : float (default : 10)
-        Angle on the beginning of the arrow in degrees.
-    angleB : float (default : 10)
-        Angle on the end of the arrow in degrees.
+    rad : float (default : 0.3)
+        Curvature on the arrow. Can be negative
     linewidth or lw : float (default : 1.0)
         Width of the arrow in points.
     color or c : any matplotlib color (default : '#4a4e4d')
@@ -101,7 +98,7 @@ def arrow(ax,
     if text_position == 'start':
         arrowstyle = '-|>'
         xy_start, xy_end = xy_end, xy_start
-        angleA, angleB = angleB, angleA
+        rad *= -1
 
     if color is not None:
         c = color
@@ -133,7 +130,7 @@ def arrow(ax,
                 xytext = xy_end, 
                 textcoords = coords,
                 arrowprops = dict(arrowstyle = arrowstyle,
-                                  connectionstyle = "angle3,angleA={0},angleB={1}".format(angleA, angleB),
+                                  connectionstyle = "arc3,rad={0}".format(rad),
                                   facecolor = fc,
                                   edgecolor = ec,
                                   **arrow_kwargs

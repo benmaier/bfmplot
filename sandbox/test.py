@@ -16,7 +16,7 @@ def sin_test(n=8,text_position='start'):
     leg = pl.legend()
     bp.align_legend_right(leg)
 
-    bp.arrow(pl.gca(), r'$i$', (6, 0.8), (3, 1.8), text_position=text_position)
+    bp.arrow(pl.gca(), r'$i$', (14, 0.8), (10, 0.15), text_position=text_position, rad=0.3)    
 
     pl.xlabel('this is the x-label')
     pl.ylabel('this is the y-label')
