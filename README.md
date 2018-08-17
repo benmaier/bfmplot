@@ -61,8 +61,7 @@ pl.show()
 
 ![one](https://github.com/benmaier/bfmplot/raw/master/sandbox/one.png "first")
 
-### Color cycle scans
-
+### Colors
 
 ```python
 for colors,name in zip([
@@ -70,12 +69,14 @@ for colors,name in zip([
                 bp.new_colors,
                 bp.brewer_qualitative,
                 bp.cccs_colors,                
+                bp.get_cividis_colors(8),
                ],
                [
                 'bfmplot.mpl_default_colors',
                 'bfmplot.new_colors',
                 'bfmplot.brewer_qualitative',
                 'bfmplot.cccs_colors',
+                'bfmplot.get_cividis_colors(8)',
                ],
                ):
 
@@ -88,3 +89,5 @@ for colors,name in zip([
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.brewer_qualitative.png "")
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.cccs_colors.png "")
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.get_cividis_colors_8_.png "")
+
+
