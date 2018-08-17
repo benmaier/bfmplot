@@ -1,4 +1,4 @@
-def sin_test(n=8):
+def sin_test(n=8,text_position='start'):
     """Test the stuff from the modules"""
 
     from bfmplot import pl
@@ -19,13 +19,22 @@ def sin_test(n=8):
     leg = pl.legend()
     bp.align_legend_right(leg)
 
+    bp.arrow(pl.gca(), r'$i$', (6, 0.8), (3, 1.8), text_position=text_position)
+
 
     pl.xlabel('hello')
     pl.ylabel('hello')
 
     pl.gcf().tight_layout()
 
-    pl.show()
 
 if __name__ == "__main__":
-    sin_test(n=4)
+    from bfmplot import pl
+    from bfmplot import mpl
+    sin_test(n=4,text_position='start')
+
+    import bfmplot as bp
+    bp.set_color_cycle(bp.new_colors)
+
+    sin_test(n=4,text_position='end')
+    pl.show()

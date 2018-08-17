@@ -15,7 +15,7 @@ mpl_default_colors = [ '#1f77b4',
                '#17becf',
               ]
 
-new_colors_1 = [ '#187960', '#bd9550', '#118390', '#d34d42', '#369c8d' ]
+new_colors = [ '#187960', '#bd9550', '#118390', '#d34d42', '#369c8d' ]
 
 brewer_qualitative = [  
             '#666666',

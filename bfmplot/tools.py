@@ -38,9 +38,105 @@ def set_color_cycle(colors):
     """Set the matplotlib color cycle with the given colors"""
     mpl.rcParams['axes.prop_cycle'] = cycler(color=colors)
 
-def arrow(ax,text):
-    ax[iN].annotate(r'$\beta$',
-    xy=(0.3, 1e-3), xycoords='data',
-    xytext=(1, 1e-7), textcoords='data',
-    arrowprops=dict(arrowstyle="->",
-    connectionstyle="angle3,angleA=10,angleB=-80"))
+def arrow(ax,
+          text,
+          xy_start,
+          xy_end,
+          text_position = 'end',
+          coords = 'data',
+          angleA = 10,
+          angleB = -80,
+          linewidth=None,
+          lw=None,
+          color=None,
+          c=None,
+          facecolor=None,
+          fc=None,
+          edgecolor=None,
+          ec=None,
+          text_kwargs={},
+          arrow_kwargs={},
+          ):
+    """Draw a curved arrow on a plot
+
+    Parameters
+    ----------
+    ax : matplotlib.axis
+        Axis to draw on.
+    test : string
+        Text to put on one end of the arrow.
+    xy_start : tuple of float
+        (x,y)-coordinates where the arrow starts.
+    xy_end : tuple of float
+        (x,y)-coordinates where the arrow end.
+    text_position : str (default : 'end')
+        Where to put the text, either the 'end' of the
+        arrow or the 'start' of the arrow.
+    coords : str (default : 'data')
+        Coordinate system of the provided coordinates, possibilities:
+        'data' : coordinates of the data in plots
+        'axes fraction' : fraction of the axis in [0,1]
+        'figure fraction' : fraction of the figure in [0,1]
+        Other styles:
+        https://matplotlib.org/api/_as_gen/matplotlib.pyplot.annotate.html
+    angleA : float (default : 10)
+        Angle on the beginning of the arrow in degrees.
+    angleB : float (default : 10)
+        Angle on the end of the arrow in degrees.
+    linewidth or lw : float (default : 1.0)
+        Width of the arrow in points.
+    color or c : any matplotlib color (default : '#4a4e4d')
+        color of the whole arrow (overridden by `facecolor`
+        and `edgecolor`)
+    facecolor or fc : facecolor of the arrow (default : '#4a4e4d')
+        facecolor of the arrow
+    edgecolor or ec : edgecolor of the arrow (default : '#4a4e4d')
+        edgecolor of the arrow
+    text_kwargs : dict (default : {})
+    arrow_kwargs : dict (default : {})
+    """
+    
+    arrowstyle = '<|-'
+
+    if text_position == 'start':
+        arrowstyle = '-|>'
+        xy_start, xy_end = xy_end, xy_start
+        angleA, angleB = angleB, angleA
+
+    if color is not None:
+        c = color
+
+    if c is None:
+        c = "#4a4e4d"  
+
+    if facecolor is not None:
+        fc = facecolor
+
+    if fc is None:
+        fc = c
+
+    if edgecolor is not None:
+        ec = edgecolor
+
+    if ec is None:
+        ec = c
+
+    if linewidth is not None:
+        lw = linewidth
+
+    if lw is None:
+        lw = 1.0
+
+    ax.annotate(text,
+                xy = xy_start, 
+                xycoords = coords,
+                xytext = xy_end, 
+                textcoords = coords,
+                arrowprops = dict(arrowstyle = arrowstyle,
+                                  connectionstyle = "angle3,angleA={0},angleB={1}".format(angleA, angleB),
+                                  facecolor = fc,
+                                  edgecolor = ec,
+                                  **arrow_kwargs
+                                 ),
+                **text_kwargs
+                )
