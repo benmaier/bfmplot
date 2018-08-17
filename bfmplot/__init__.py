@@ -1,8 +1,8 @@
 import matplotlib as mpl
 import matplotlib.pyplot as pl
 
-from sequences import *
-from tools import *
+from .sequences import *
+from .tools import *
 
 figwidth = 5 
 
