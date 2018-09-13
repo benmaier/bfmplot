@@ -172,3 +172,64 @@ def set_n_ticks(ax=None,nx=3,ny=2):
     pl.locator_params(axis='y', nbins=nx)
     pl.locator_params(axis='x', nbins=ny)
     pl.sca(old_ax)
+
+def human_format(num, precision=2):
+    """Return numbers rounded to given precision and with sensuous suffixes.
+
+    Parameters
+    ==========
+    num : float
+        The number to humanify.
+    precision : int, default : 2
+        Number of decimal places.
+
+    Return
+    ======
+    s : String
+        Human readable string.
+    """
+    suffixes=['', 'k', 'M', 'G', 'T', 'P']
+    m = sum([abs(num/1000.0**x) >= 1 for x in range(1, len(suffixes))])
+    return f'{num/1000.0**m:.{precision}f}{suffixes[m]}'
+
+def humanify_xticks(ax,precision=2):
+    """Make the xticks human readable.
+
+    Parameters
+    ==========
+    ax : matplotlib.Axes
+        The instance to modify.
+    precision : int, default: 2
+        Number of decimal places after contraction.
+    """
+
+    xt = ax.get_xticks()
+    ax.set_xticklabels([human_format(x,precision) for x in xt])
+
+def humanify_yticks(ax,precision=2):
+    """Make the xticks human readable.
+
+    Parameters
+    ==========
+    ax : matplotlib.Axes
+        The instance to modify.
+    precision : int, default: 2
+        Number of decimal places after contraction.
+    """
+
+    yt = ax.get_yticks()
+    ax.set_yticklabels([human_format(y,precision) for y in yt])
+
+def humanify_ticks(ax,precision=2,):
+    """Make the ticks human readable.
+
+    Parameters
+    ==========
+    ax : matplotlib.Axes
+        The instance to modify.
+    precision : int, default: 2
+        Number of decimal places after contraction.
+    """
+
+    humanify_xticks(ax,precision)
+    humanify_yticks(ax,precision)
