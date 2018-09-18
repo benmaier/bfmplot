@@ -169,8 +169,13 @@ def set_n_ticks(ax=None,nx=3,ny=2):
         ax = pl.gca()
     old_ax = pl.gca()
     pl.sca(ax)
-    pl.locator_params(axis='y', nbins=nx)
-    pl.locator_params(axis='x', nbins=ny)
+
+    if ny is not None:
+        pl.locator_params(axis='y', nbins=ny)
+
+    if nx is not None:
+        pl.locator_params(axis='x', nbins=nx)
+
     pl.sca(old_ax)
 
 def human_format(num, precision=2):
