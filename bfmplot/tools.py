@@ -23,6 +23,9 @@ def phys_rev_column(scale=1):
 
     return [3.375*scale, 3.*scale]
 
+def set_figsize(figsize):
+    mpl.rcParams['figure.figsize'] = figsize
+
 
 def align_legend_right(legend):
     """Align the items of the legend to the right side."""
@@ -238,3 +241,7 @@ def humanify_ticks(ax,precision=2,):
 
     humanify_xticks(ax,precision)
     humanify_yticks(ax,precision)
+
+def set_fontsize(fs):
+
+    mpl.rcParams['font.size'] = 9
