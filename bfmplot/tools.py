@@ -316,21 +316,25 @@ def add_curve_label(ax,
     angle = np.arctan2(dy,dx) / np.pi * 180
 
     # convert back to data coordinates
-    x0, y0 = ax.transData.inverted().transform( np.array( [ x0, y0 ] ))
-
+    x0 = label_pos_abs
+    y0 = np.interp(x0, curve_x, curve_y)
     # define bounding box for label
     bbox = dict(facecolor='w', alpha=1, edgecolor='none', pad=bbox_pad)
+
+    if not ('ha' in kwargs or 'horizontalalignment' in kwargs):
+        kwargs['ha'] = 'center'
+
+    if not ('va' in kwargs or 'verticalalignment' in kwargs):
+        kwargs['va'] = 'center'
 
     # add label
     ax.text(x0, 
             y0, 
             label, 
             rotation=angle, 
-            #rotation_mode='anchor',
+            rotation_mode='anchor',
             bbox=bbox,
             transform=ax.transData,
-            ha='center',
-            va='center',
             **kwargs
             )
 
