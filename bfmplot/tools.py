@@ -253,6 +253,7 @@ def add_curve_label(ax,
                     label,
                     label_pos_abs=None,
                     label_pos_rel=None,
+                    bbox_pad=1.0,
                     **kwargs):
     """
     Add a label to a curve according to the curve's slope
@@ -277,6 +278,8 @@ def add_curve_label(ax,
         The relative x-position at which to pose the label. 
         Must be 0 <= label_pos_rel < 1.
         If None, `label_pos_abs` must be given.
+    bbox_pad : float, default : 1.0
+        Padding of the bounding box around the label.
     **kwargs
         Will be passed to pyplot.text.
     """
@@ -316,7 +319,7 @@ def add_curve_label(ax,
     x0, y0 = ax.transData.inverted().transform( np.array( [ x0, y0 ] ))
 
     # define bounding box for label
-    bbox = dict(facecolor='w', alpha=1, edgecolor='none')
+    bbox = dict(facecolor='w', alpha=1, edgecolor='none', pad=bbox_pad)
 
     # add label
     ax.text(x0, 
@@ -353,15 +356,15 @@ if __name__ == "__main__":
 
 
     pl.gcf().tight_layout()
+    pl.xlim([1,10])
+    bp.strip_axis(ax)
 
     for mu in mus:
         label = r'$\mu={:d}$'.format(int(mu))
         y = x**mu
         add_curve_label(ax,x,y,label,label_pos_rel = 0.5 + mu/50)
 
-    pl.xlim([1,10])
 
-    bp.strip_axis(ax)
         
     pl.show()
 
