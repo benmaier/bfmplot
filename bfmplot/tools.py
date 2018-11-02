@@ -3,6 +3,8 @@ from bfmplot import mpl
 from cycler import cycler
 import numpy as np
 
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+
 def strip_axis(ax):
     """Remove the right and the top axis"""
     ax.spines['right'].set_visible(False)
@@ -254,6 +256,7 @@ def add_curve_label(ax,
                     label_pos_abs=None,
                     label_pos_rel=None,
                     bbox_pad=1.0,
+                    bbox_facecolor='w',
                     **kwargs):
     """
     Add a label to a curve according to the curve's slope
@@ -318,8 +321,9 @@ def add_curve_label(ax,
     # convert back to data coordinates
     x0 = label_pos_abs
     y0 = np.interp(x0, curve_x, curve_y)
+
     # define bounding box for label
-    bbox = dict(facecolor='w', alpha=1, edgecolor='none', pad=bbox_pad)
+    bbox = dict(facecolor=bbox_facecolor, alpha=1, edgecolor='none', pad=bbox_pad)
 
     if not ('ha' in kwargs or 'horizontalalignment' in kwargs):
         kwargs['ha'] = 'center'
@@ -337,6 +341,16 @@ def add_curve_label(ax,
             transform=ax.transData,
             **kwargs
             )
+
+def get_inset_axes(ax,width="40%", height="18%",loc='best'):
+    """Add an inset axes to the axes `ax` and return it."""
+
+    inset = inset_axes(ax,
+                    width=width, # width = 30% of parent_bbox
+                    height=height, # height : 1 inch
+                    loc=loc)
+
+    return inset
 
 
 if __name__ == "__main__":
