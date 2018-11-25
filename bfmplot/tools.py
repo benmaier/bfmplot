@@ -5,12 +5,18 @@ import numpy as np
 
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
-def strip_axis(ax):
+def strip_axis(ax,horizontal='right'):
     """Remove the right and the top axis"""
-    ax.spines['right'].set_visible(False)
+    if horizontal == 'right':
+        anti_horizontal = 'left'
+    else:
+        anti_horizontal = 'right'
+        ax.yaxis.set_label_position("right")
+
+    ax.spines[horizontal].set_visible(False)
     ax.spines['top'].set_visible(False)
 
-    ax.yaxis.set_ticks_position('left')
+    ax.yaxis.set_ticks_position(anti_horizontal)
     ax.xaxis.set_ticks_position('bottom')
 
 def golden_ratio(figwidth=5):
@@ -368,14 +374,14 @@ if __name__ == "__main__":
         pl.plot(x,y,c=bp.brewer_qualitative[0])
 
     #pl.xscale('log')
+    bp.strip_axis(ax,horizontal='left')
     pl.yscale('log')
-    pl.xlabel('x')
-    pl.ylabel('y')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
 
 
     pl.gcf().tight_layout()
     pl.xlim([1,10])
-    bp.strip_axis(ax)
 
     for mu in mus:
         label = r'$\mu={:d}$'.format(int(mu))
