@@ -263,6 +263,9 @@ def add_curve_label(ax,
                     label_pos_rel=None,
                     bbox_pad=1.0,
                     bbox_facecolor='w',
+                    angle=None,
+                    x_offset=0.0,
+                    y_offset=0.0,
                     **kwargs):
     """
     Add a label to a curve according to the curve's slope
@@ -289,6 +292,16 @@ def add_curve_label(ax,
         If None, `label_pos_abs` must be given.
     bbox_pad : float, default : 1.0
         Padding of the bounding box around the label.
+    bbox_facecolor : matplotlib color, default : 'w'
+        Color of the bounding box around the label.
+    angle : float, default : None
+        Usually, the angle is calculated from the displayed
+        curve's slope, but it can be adjusted manually
+        with this parameter (angle in degrees).
+    x_offset : float, default : 0.0
+        offset in x-direction (IN AXES COORDINATES)
+    y_offset : float, default : 0.0
+        offset in y-direction (IN AXES COORDINATES)
     **kwargs
         Will be passed to pyplot.text.
     """
@@ -322,11 +335,25 @@ def add_curve_label(ax,
     # compute slope and angle at this point in display coordinates
     dx = x1 - x0
     dy = y1 - y0
-    angle = np.arctan2(dy,dx) / np.pi * 180
+
+    if angle is None:
+        angle = np.arctan2(dy,dx) / np.pi * 180
 
     # convert back to data coordinates
     x0 = label_pos_abs
     y0 = np.interp(x0, curve_x, curve_y)
+
+    # convert to absolute coordinates
+    x0, y0 = ax.transData.transform( np.array( [ x0, y0 ] ))
+    # convert to Axes coordinates
+    x0, y0 = ax.transAxes.inverted().transform( np.array( [ x0, y0 ] ))
+
+    # add the offset in axes coordinates
+    x0 += x_offset
+    y0 += y_offset
+
+    x0, y0 = ax.transAxes.transform( np.array( [ x0, y0 ] ))
+    x0, y0 = ax.transData.inverted().transform( np.array( [ x0, y0 ] ))
 
     # define bounding box for label
     bbox = dict(facecolor=bbox_facecolor, alpha=1, edgecolor='none', pad=bbox_pad)
