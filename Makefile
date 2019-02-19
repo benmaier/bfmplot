@@ -3,3 +3,8 @@ default:
 
 install:
 	pip install ../bfmplot
+
+pypi:
+	rm dist/*
+	python setup.py sdist
+	twine upload dist/*

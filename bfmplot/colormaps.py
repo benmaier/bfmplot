@@ -14,6 +14,8 @@ import numpy as np
 
 from bfmplot import pl
 
+import matplotlib as mpl
+
 from matplotlib.colors import LinearSegmentedColormap
 
 def convert_color_array_to_cdict(arr):
