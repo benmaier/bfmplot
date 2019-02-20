@@ -207,7 +207,8 @@ def human_format(num, precision=2):
     """
     suffixes=['', 'k', 'M', 'G', 'T', 'P']
     m = sum([abs(num/1000.0**x) >= 1 for x in range(1, len(suffixes))])
-    return f'{num/1000.0**m:.{precision}f}{suffixes[m]}'
+    #return f'{num/1000.0**m:.{precision}f}{suffixes[m]}'
+    return "%.{}f{}".format(precision,suffixes[m]) % (num/1000.0**m)
 
 def humanify_xticks(ax,precision=2):
     """Make the xticks human readable.
@@ -414,6 +415,9 @@ if __name__ == "__main__":
         label = r'$\mu={:d}$'.format(int(mu))
         y = x**mu
         add_curve_label(ax,x,y,label,label_pos_rel = 0.5 + mu/50)
+
+
+    print(human_format(112345,precision=2))
 
 
         
