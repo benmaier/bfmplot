@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='bfmplot',
-      version='0.0.5',
+      version='0.0.6',
       description="Snippet collections for plots how I make them.",
       url='https://www.github.com/benmaier/bfmplot',
       author='Benjamin F. Maier',
