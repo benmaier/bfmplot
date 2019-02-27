@@ -37,6 +37,8 @@ cccs_colors=[
                 '#e6ab02',
             ]
 
+colors = brewer_qualitative
+
 class simple_cycler(list):
     """Simplest implementation of a list with periodic boundary conditions"""
     def __init__(self,items):
