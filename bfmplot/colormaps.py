@@ -57,16 +57,24 @@ maier3 = np.array([
     [217,95,2],
 ]) / 255.
 
+maier4 = np.array([
+    [255,255,255],
+    [255.,52.,160.],
+]) / 255.
+
 maier_cmap = convert_color_array_to_cdict(maier)
 maier_linear_segmented = LinearSegmentedColormap('maier', maier_cmap)
 maier2_cmap = convert_color_array_to_cdict(maier2)
 maier2_linear_segmented = LinearSegmentedColormap('maier2', maier2_cmap)
 maier3_cmap = convert_color_array_to_cdict(maier3)
 maier3_linear_segmented = LinearSegmentedColormap('maier3', maier3_cmap)
+maier4_cmap = convert_color_array_to_cdict(maier4)
+maier4_linear_segmented = LinearSegmentedColormap('maier4', maier4_cmap)
 
 pl.register_cmap(cmap=maier_linear_segmented)
 pl.register_cmap(cmap=maier2_linear_segmented)
 pl.register_cmap(cmap=maier3_linear_segmented)
+pl.register_cmap(cmap=maier4_linear_segmented)
 
 def get_maier_colors(N, x_start=0, x_end=1.0):
     """Get a color array of `N` entries, where the `N` entries
@@ -88,11 +96,20 @@ def get_maier2_colors(N, x_start=0, x_end=1.0):
 
 def get_maier3_colors(N, x_start=0, x_end=1.0):
     """Get a color array of `N` entries, where the `N` entries
-    are taken at equidistance from the `maier2` array between
+    are taken at equidistance from the `maier3` array between
     `n_start` and `n_end`"""
 
     vals = np.linspace(x_start, x_end, N)
     colors = [ maier3_linear_segmented(v) for v in vals ]
+    return colors
+
+def get_maier4_colors(N, x_start=0, x_end=1.0):
+    """Get a color array of `N` entries, where the `N` entries
+    are taken at equidistance from the `maier4` array between
+    `n_start` and `n_end`"""
+
+    vals = np.linspace(x_start, x_end, N)
+    colors = [ maier4_linear_segmented(v) for v in vals ]
     return colors
 
 def make_default():
