@@ -47,5 +47,10 @@ class simple_cycler(list):
     def __getitem__(self,i):
         return self.items[i%len(self.items)]
 
-markers = simple_cycler(['s','d','o','v','*','^','.','>','h','p','P','<','8','H','X'])
+    def __getitem__(self,i):
+        return self.items[i%len(self.items)]
+
+
+#markers = simple_cycler(['s','d','o','v','*','^','.','>','h','p','P','<','8','H','X'])
+markers = simple_cycler(['s','d','o','v','*','^','>','h','p','P','<','8','H','X'])
 
