@@ -39,6 +39,10 @@ cccs_colors=[
 
 colors = brewer_qualitative
 
+epipack = [ '#'+s for s in ['365663','ee6f51','2a9d8f','83e377','e9c46a','646464','ff9de4','52b7dc','b75b9e','ff9de4','47829a','ff9f92','45dbc8','a4ffbb','ffee9d','a1a1a1','b0dff0','ffcaf0',]]
+
+colors = epipack
+
 class simple_cycler(list):
     """Simplest implementation of a list with periodic boundary conditions"""
     def __init__(self,items):
