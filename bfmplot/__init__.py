@@ -1,6 +1,17 @@
 import matplotlib as mpl
 import matplotlib.pyplot as pl
 
+__version__ = "0.0.10"
+
+__author__ = "Benjamin F. Maier"
+__copyright__ = "Copyright 2020-2021, " + __author__
+__credits__ = [__author__]
+__license__ = "MIT"
+__maintainer__ = __author__
+__email__ = "contact@benmaier.org"
+__status__ = "Development"
+
+
 #from .cividis import *
 from .sequences import *
 from .tools import *
