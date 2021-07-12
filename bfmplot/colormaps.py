@@ -40,7 +40,7 @@ def convert_color_array_to_cdict(arr):
     return cdict
 
 maier = np.array([
-    [79.,168.,140.], 
+    [79.,168.,140.],
     [121.,121.,121.],
     [255.,52.,160.],
 ]) / 255.

@@ -2,7 +2,8 @@ bfmplot
 =======
 
 A collection of snippets for plots to make my life easier. The name is a
-nod to the great `Burkhard Bunk`_.
+nod to the great `Burkhard
+Bunk <http://people.physik.hu-berlin.de/~bunk/bbplot/>`__.
 
 Install
 -------
@@ -71,7 +72,8 @@ First Example
 
    pl.show()
 
-|one|
+.. image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/one.png
+   :alt: one
 
 Colors
 ~~~~~~
@@ -84,6 +86,7 @@ Colors
                    bp.brewer_qualitative,
                    bp.cccs_colors,                
                    bp.get_cividis_colors(8),
+                   bp.wong,
                   ],
                   [
                    'bfmplot.mpl_default_colors',
@@ -91,19 +94,18 @@ Colors
                    'bfmplot.brewer_qualitative',
                    'bfmplot.cccs_colors',
                    'bfmplot.get_cividis_colors(8)',
+                   'bfmplot.wong',
                   ],
                   ):
 
        bp.set_color_cycle(colors)
        sin_test(n=8,text_position='start')
 
-|image1| |image2| |image3| |image4| |image5|
+|image1| |image2| |image3| |image4| |image5| |image6|
 
-.. _Burkhard Bunk: http://people.physik.hu-berlin.de/~bunk/bbplot/
-
-.. |one| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/one.png
 .. |image1| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.mpl_default_colors.png
 .. |image2| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.new_colors.png
 .. |image3| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.brewer_qualitative.png
 .. |image4| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.cccs_colors.png
 .. |image5| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.get_cividis_colors_8_.png
+.. |image6| image:: https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.wong.png

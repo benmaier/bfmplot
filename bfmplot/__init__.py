@@ -1,7 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as pl
 
-from .cividis import *
+#from .cividis import *
 from .sequences import *
 from .tools import *
 

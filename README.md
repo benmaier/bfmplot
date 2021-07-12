@@ -70,6 +70,7 @@ for colors,name in zip([
                 bp.brewer_qualitative,
                 bp.cccs_colors,                
                 bp.get_cividis_colors(8),
+                bp.wong,
                ],
                [
                 'bfmplot.mpl_default_colors',
@@ -77,6 +78,7 @@ for colors,name in zip([
                 'bfmplot.brewer_qualitative',
                 'bfmplot.cccs_colors',
                 'bfmplot.get_cividis_colors(8)',
+                'bfmplot.wong',
                ],
                ):
 
@@ -89,5 +91,6 @@ for colors,name in zip([
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.brewer_qualitative.png "")
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.cccs_colors.png "")
 ![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.get_cividis_colors_8_.png "")
+![](https://github.com/benmaier/bfmplot/raw/master/sandbox/bfmplot.wong.png "")
 
 

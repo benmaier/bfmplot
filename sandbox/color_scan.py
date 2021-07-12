@@ -30,6 +30,7 @@ for colors,name in zip([
                 bp.brewer_qualitative,
                 bp.cccs_colors,                
                 bp.get_cividis_colors(8),
+                bp.wong,
                ],
                [
                 'bfmplot.mpl_default_colors',
@@ -37,6 +38,7 @@ for colors,name in zip([
                 'bfmplot.brewer_qualitative',
                 'bfmplot.cccs_colors',
                 'bfmplot.get_cividis_colors(8)',
+                'bfmplot.wong',
                ],
                ):
 
