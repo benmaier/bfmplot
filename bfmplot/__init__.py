@@ -1,7 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as pl
 
-__version__ = "0.0.10"
+__version__ = "0.0.11"
 
 __author__ = "Benjamin F. Maier"
 __copyright__ = "Copyright 2020-2021, " + __author__
@@ -15,6 +15,7 @@ __status__ = "Development"
 #from .cividis import *
 from .sequences import *
 from .tools import *
+from .colortools import *
 
 figwidth = 5
 
