@@ -3,6 +3,8 @@ from bfmplot import mpl
 from cycler import cycler
 import numpy as np
 
+from bfmplot.niceticks import NiceTicks
+
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 def strip_axis(ax,horizontal='right'):
@@ -386,6 +388,26 @@ def get_inset_axes(ax,width="40%", height="18%",loc='best'):
 
     return inset
 
+def nice_ticks(ax,axes='xy'):
+
+    get_lims = {
+                'x': ax.get_xlim,
+                'y': ax.get_ylim,
+            }
+    set_lims = {
+                'x': ax.set_xlim,
+                'y': ax.set_ylim,
+            }
+    set_ticks = {
+                'x': ax.set_xticks,
+                'y': ax.set_yticks,
+            }
+
+    for _ax in axes.lower():
+        lim = get_lims[_ax]()
+        Ticks = NiceTicks(*lim)
+        set_lims[_ax](Ticks.lim)
+        set_ticks[_ax](Ticks.ticks)
 
 if __name__ == "__main__":
 
@@ -419,7 +441,5 @@ if __name__ == "__main__":
 
     print(human_format(112345,precision=2))
 
-
-        
     pl.show()
 

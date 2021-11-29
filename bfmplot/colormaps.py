@@ -16,6 +16,8 @@ from bfmplot import pl
 
 import matplotlib as mpl
 
+
+from bfmplot.colortools import torgb
 from matplotlib.colors import LinearSegmentedColormap
 
 def convert_color_array_to_cdict(arr):
@@ -38,6 +40,17 @@ def convert_color_array_to_cdict(arr):
         cdict[k] = tuple(cdict[k])
 
     return cdict
+
+def get_color_interpolator(color_start, color_target,midpoint=None,name='__color_interpolator__'):
+    src = torgb(color_start)
+    trg = torgb(color_target)
+    if midpoint is not None:
+        midpoint = torgb(midpoint)
+        cdict = convert_color_array_to_cdict(np.array([src,midpoint,trg]))
+    else:
+        cdict = convert_color_array_to_cdict(np.array([src,trg]))
+    linear_segmented = LinearSegmentedColormap(name, cdict)
+    return linear_segmented
 
 maier = np.array([
     [79.,168.,140.],

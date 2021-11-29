@@ -59,7 +59,7 @@ def torgb(color):
         except KeyError as e:
             raise ValueError("unknown color: '" + str(color) +"'")
     elif type(color) in (list, tuple, np.ndarray) and len(color) == 3:
-        return h2r(color)
+        return color
     else:
         raise ValueError("Don't know how to interpret color " + str(color))
 
