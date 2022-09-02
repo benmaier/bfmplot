@@ -1,7 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as pl
 
-__version__ = "0.0.11"
+__version__ = "0.0.12"
 
 __author__ = "Benjamin F. Maier"
 __copyright__ = "Copyright 2020-2021, " + __author__
@@ -23,7 +23,7 @@ figwidth = 5
 #mpl.rcParams['legend.fontsize'] = 'medium'
 #mpl.rcParams['figure.titlesize'] = 'medium'
 #mpl.rcParams['axes.titlesize'] = 'medium'
-mpl.rcParams['figure.figsize'] = golden_ratio(figwidth)
+#mpl.rcParams['figure.figsize'] = golden_ratio(figwidth)
 ##mpl.rcParams['xtick.labelsize'] = 'small'
 ##mpl.rcParams['ytick.labelsize'] = 'small'
 #mpl.rcParams['xtick.labelsize'] = 'medium'
@@ -35,5 +35,5 @@ mpl.rcParams['figure.figsize'] = golden_ratio(figwidth)
 
 # colors
 #mpl.rcParams['axes.prop_cycle'] = cycler(color=brewer_qualitative)
-mpl.rcParams['axes.prop_cycle'] = cycler(color=epipack)
-mpl.rcParams['image.cmap'] = 'cividis'
+#mpl.rcParams['axes.prop_cycle'] = cycler(color=epipack)
+#mpl.rcParams['image.cmap'] = 'cividis'

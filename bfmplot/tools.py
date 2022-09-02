@@ -3,9 +3,19 @@ from bfmplot import mpl
 from cycler import cycler
 import numpy as np
 
+import matplotlib.dates as mdates
+
 from bfmplot.niceticks import NiceTicks
 
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+
+def format_dates(ax,formatstring='%b %d'):
+    #formatter = mdates.DateFormatter(formatstring)
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(formatter)
+    pl.setp(ax.get_xticklabels(), rotation = 45,horizontalalignment='right')
 
 def strip_axis(ax,horizontal='right'):
     """Remove the right and the top axis"""
