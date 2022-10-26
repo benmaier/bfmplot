@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from bfmplot import pl
 from bfmplot import mpl
 from cycler import cycler
@@ -419,6 +421,34 @@ def nice_ticks(ax,axes='xy'):
         set_lims[_ax](Ticks.lim)
         set_ticks[_ax](Ticks.ticks)
 
+def scifmt(number,fmt='.2e',remove_trailing_zeros=True):
+    signs = {'+':'','-':'⁻'}
+    conversion = {
+            'e':'×10',
+            '+':'',
+            '-':'⁻',
+        }
+    superscriptnumbers = '⁰¹²³⁴⁵⁶⁷⁸⁹'
+    conversion.update({str(i):char for i, char in enumerate(superscriptnumbers)})
+
+    s = ('{0:'+fmt+'}').format(number)
+    begin, end = s.split('e')
+    if remove_trailing_zeros and '.' in begin and begin.endswith('0'):
+        while begin.endswith('0'):
+            begin = begin[:-1]
+        begin = begin[:-1]
+
+    sign = end[0]
+    end = end[1:]
+    while end.startswith('0'):
+        end = end[1:]
+    s = begin + conversion['e'] + ''.join([conversion[superscript] for superscript in sign+end ])
+    if begin == '1':
+        # remove 1 x
+        s = s[2:]
+
+    return s
+
 if __name__ == "__main__":
 
 
@@ -450,6 +480,10 @@ if __name__ == "__main__":
 
 
     print(human_format(112345,precision=2))
+
+
+    print(scifmt(92835629357))
+    print(scifmt(0.00000000000000000000000003))
 
     pl.show()
 
